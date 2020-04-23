@@ -58,4 +58,44 @@ public class Main_1786_찾기_gold2 {
 			}
 		}
 	}
+	
+	static int[] getPI2(String pattern) {
+		int[] pi2 = new int[pattern.length()];
+		
+		char[] ptrn = pattern.toCharArray();
+		
+		int j = 0;
+		
+		for (int i = 0; i < ptrn.length; i++) {
+			while( j>0 && ptrn[i] != ptrn[j]) {
+				j = pi2[j-1];
+			}
+			if(ptrn[i] == ptrn[j]) {
+				pi2[i] = ++j;
+			}
+		}
+		
+		return pi2;
+	}// end getpi
+	
+	static int KMP2(String orgin,String pattern) {
+		char[] orgn = orgin.toCharArray();
+		char[] ptrn = pattern.toCharArray();
+		int j = 0;
+		int[] pi2 = getPI2(pattern);
+		for (int i = 0; i < orgn.length; i++) {
+			while( j > 0 && orgn[i] != ptrn[j]) {
+				j = pi2[j-1]++;
+			}
+			if(orgn[i] == ptrn[j]) {
+				if( j == ptrn.length-1) {
+					return i-ptrn.length+2;
+				}else {
+					j++;
+				}
+			}
+		}
+		
+		return -1;
+	}
 }

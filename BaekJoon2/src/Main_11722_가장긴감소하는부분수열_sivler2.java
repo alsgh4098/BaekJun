@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main_11722_가장긴증가하는부분수열_sivler2 {
+public class Main_11722_가장긴감소하는부분수열_sivler2 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
